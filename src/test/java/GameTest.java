@@ -42,4 +42,34 @@ public class GameTest {
 
         Assertions.assertEquals(expected, actual);
     }
+
+    @Test
+    public void playerTest1() {
+        game.register(player1);
+        game.register(player5);
+
+        Assertions.assertThrows(NotRegisteredException.class, () -> {
+            game.round("", "Андрей");
+        });
+    }
+
+    @Test
+    public void playerTest2() {
+        game.register(player1);
+        game.register(player6);
+
+        Assertions.assertThrows(NotRegisteredException.class, () -> {
+            game.round("Катя", "");
+        });
+    }
+
+    @Test
+    public void playerTest4() {
+        game.register(player1);
+        game.register(player4);
+
+        Assertions.assertThrows(NotRegisteredException.class, () -> {
+            game.round("", "");
+        });
+    }
 }
